@@ -1,0 +1,24 @@
+<input
+  [(ngModel)]="term"
+  class="mb-2 border py-2 px-4 w-full"
+  placeholder="Filter products..."
+  type="text"
+>
+<!--<h1 class="font-bold mb-2 text-center text-lg">{{title | titlecase}}</h1>-->
+<p *ngIf="productStore.loading" class="text-center text-lg">Loading...</p>
+<div *ngIf="productStore.products as products">
+  <app-product
+    *ngFor="let product of products | filterProducts: term; let i = index"
+    [product]="product"
+  />
+</div>
+<button
+  (click)="modalStore.open()"
+  *ngIf="!(modalStore.isOpen$ | async); else createButton"
+  class="rounded-full bg-red-700 text-white fixed right-5 bottom-5 py-2 px-4"
+>
+  +
+</button>
+<ng-template #createButton>
+  <app-createProduct/>
+</ng-template>

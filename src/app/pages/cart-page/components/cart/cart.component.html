@@ -1,0 +1,9 @@
+<li>
+    <span [class.done]="todo.completed">
+      <input (change)="handleOnChange(todo.id)" [checked]="todo.completed" type="checkbox">
+      <strong>{{index + 1}}</strong>
+      {{todo.title}}
+    </span>
+  <small>{{todo.date | date: 'short' : undefined : 'ru'}}</small>
+  <button (click)="removeItem(todo.id)" class="rm">&times;</button>
+</li>

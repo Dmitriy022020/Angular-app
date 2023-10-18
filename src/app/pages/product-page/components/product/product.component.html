@@ -1,0 +1,37 @@
+<div class="py-4 px-6 border rounded flex items-center flex-col mb-2">
+  <img [alt]="product.title" [src]="product.image" class="w-1/6 mb-2">
+  <h2 class="mb-2 text-md text-center">
+    {{product.title}}
+  </h2>
+  <p>
+    Price:
+    <span class="font-bold">
+    {{product.price | currency:'RUB':'symbol-narrow':'':'ru'}}
+    </span>
+  </p>
+  <button
+    (click)="handleClick()"
+    [ngClass]="{
+      'bg-yellow-400': !details,
+      'bg-blue-400': details,
+    }"
+    class="border py-2 px-4 rounded bg-yellow-400"
+  >
+    {{details ? 'Hide details' : 'Show details'}}
+  </button>
+  <div *ngIf="details">
+    <p>
+      {{product.description}}
+    </p>
+    <p *ngIf="product.rating">
+      Rate:
+      <span
+        [ngStyle]="{
+          fontWeight: product.rating.rate > 4 ? 'bold' : 'normal'
+        }"
+      >
+        {{product.rating.rate | number: '1.1-1'}} / {{product.rating.count}}
+      </span>
+    </p>
+  </div>
+</div>

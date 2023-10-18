@@ -1,0 +1,44 @@
+li {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    margin-right: 10px;
+  }
+
+  small {
+    position: absolute;
+    right: 40px;
+    bottom: 5px;
+    font-size: 10px;
+  }
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.rm {
+  $color: red;
+  border-radius: 50%;
+  background: $color;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  width: 20px;
+  height: 20px;
+  transition: 0.3s all;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background: darken($color, 20%);
+  }
+}

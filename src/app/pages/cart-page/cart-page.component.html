@@ -1,0 +1,12 @@
+<p *ngIf="cartStore.loading" class="textCenter">Loading...</p>
+
+<ul *ngIf="cartStore.todos.length || cartStore.loading; else noItems">
+  <app-cart
+    *ngFor="let todo of cartStore.todos; let index = index"
+    [index]="index"
+    [todo]="todo"/>
+</ul>
+
+<ng-template #noItems>
+  <p class="textCenter">No items now</p>
+</ng-template>
